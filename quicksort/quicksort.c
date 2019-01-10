@@ -1,9 +1,11 @@
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
 void shuffle(int arr[],int lo,int hi);
 int partition(int arr[],int lo,int hi);
 void quicksort(int arr[],int lo,int hi);
+
 int main(){
   srand(time(0));
   int arr[]={9,8,2,6,5,4,3};
