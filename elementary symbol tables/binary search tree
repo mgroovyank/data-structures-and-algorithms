@@ -1,0 +1,59 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+  char key;
+  int value;
+  struct node *left;
+  struct node *right;
+};
+struct node *head=NULL;
+struct node* put(struct node *root,char key,int value);
+int get(char key);
+
+int main()
+{
+  head=put(head,'S',1);
+  printf("%d",head->value);
+  put(head,'E',2);
+  put(head,'X',3);
+  put(head,'A',4);
+  put(head,'R',5);
+  put(head,'C',6);
+  put(head,'C',7);
+  int temp=get('R');
+  printf("\n%d",temp);
+}
+
+struct node* put(struct node *root,char key,int value){
+  if(root==NULL){
+    struct node *newNode=NULL;
+    newNode=(struct node*)malloc(sizeof(struct node));
+    newNode->key=key;
+    newNode->value=value;
+    newNode->left=NULL;
+    newNode->right=NULL;
+    return newNode;
+  }
+  if(root->key>key){
+    root->left=put(root->left,key,value);
+  }else if(root->key<key){
+    root->right=put(root->right,key,value);
+  }else{
+    root->value=value;
+  }
+  return root;
+}
+
+int get(char key){
+  struct node *temp=head;
+  while(temp!=NULL){
+    if(temp->key==key){
+      return temp->value;
+    }else if(temp->key>key){
+      temp=temp->left;
+    }else{
+      temp=temp->right;
+    }
+  }
+}
