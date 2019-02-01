@@ -20,12 +20,12 @@ void inorder(struct node *root);
 int main()
 {
   head=put(head,'S',1);inorder(head);printf("\n");
-  put(head,'E',2);inorder(head);printf("\n");
-  put(head,'X',3);inorder(head);printf("\n");
-  put(head,'A',4);inorder(head);printf("\n");
-  put(head,'R',5);inorder(head);printf("\n");
-  put(head,'C',6);inorder(head);printf("\n");
-  put(head,'H',7);inorder(head);printf("\n");
+  head=put(head,'E',2);inorder(head);printf("\n");
+  head=put(head,'X',3);inorder(head);printf("\n");
+  head=put(head,'A',4);inorder(head);printf("\n");
+  head=put(head,'R',5);inorder(head);printf("\n");
+  head=put(head,'C',6);inorder(head);printf("\n");
+  head=put(head,'H',7);inorder(head);printf("\n");
 }
 
 struct node* put(struct node *root,char key,int value){
