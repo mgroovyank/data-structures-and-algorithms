@@ -23,12 +23,12 @@ int main()
 {
   head=put(head,'S',1);
   printf("%d",head->value);
-  put(head,'E',2);
-  put(head,'X',3);
-  put(head,'A',4);
-  put(head,'R',5);
-  put(head,'C',6);
-  put(head,'H',7);
+  head=put(head,'E',2);
+  head=put(head,'X',3);
+  head=put(head,'A',4);
+  head=put(head,'R',5);
+  head=put(head,'C',6);
+  head=put(head,'H',7);
   int temp=get('R');
   printf("\n%d",temp);
   struct node *f=flr(head,'G');
