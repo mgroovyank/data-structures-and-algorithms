@@ -1,0 +1,49 @@
+#include <iostream>
+#include <algorithm>
+#include <cmath>
+using namespace std;
+int block;
+struct query{
+  int l,r,idx;
+};
+bool comparator(query x,query y){
+  if(x.l/block !=y.l/block){
+    return y.l/block>x.l/block;
+  }
+  return y.r>x.r;
+}
+void getSums(int arr[],int n,query queries[],int q){
+  block=(int)sqrt(n);
+  sort(queries,queries+q,comparator);
+  int cl,cr,csum;
+  cl=cr=csum=0;
+  int i;
+  int ans[q];
+  for(i=0;i<q;i++){
+    while(cl<queries[i].l){
+      csum=csum-arr[cl];
+      cl++;
+    }
+    while(cl>queries[i].l){
+      csum=csum+arr[cl-1];
+      cl--;
+    }
+    while(cr<=queries[i].r){
+      csum=csum+arr[cr];
+      cr++;
+    }
+    while(cr>queries[i].r+1){
+      csum=csum-arr[cr-1];
+      cr--;
+    }
+    ans[queries[i].idx]=csum;
+  }
+  for(i=0;i<q;i++){
+    cout<<ans[i]<<"\n";
+  }
+}
+int main() {
+  int arr[]={1,2,1,3,4,5,2,8};
+  query queries[]={{0,4,0},{1,3,1},{2,4,2}};//array of structure
+  getSums(arr,8,queries,3);//3 is size of queries array
+}
